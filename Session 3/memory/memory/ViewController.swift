@@ -36,6 +36,8 @@ class ViewController: UIViewController {
                                             self.previousButton.alpha = 0
                                             sender.alpha = 0
                 }, completion: nil)
+                sender.tag = -1
+                previousButton.tag = -1
             }
             else{
                 sender.setBackgroundImage(UIImage(named: String(sender.tag)), for: UIControlState.normal)
@@ -44,8 +46,6 @@ class ViewController: UIViewController {
                     self.putCovers()
                 })
 
-//                sender.setBackgroundImage(UIImage(named:"c"), for: UIControlState.normal)
-//                previousButton.setBackgroundImage(UIImage(named:"c"), for: UIControlState.normal)
             }
             previousButton = nil
             firstClick = true
@@ -54,8 +54,10 @@ class ViewController: UIViewController {
     
     func putCovers() {
         for button in buttons{
+            if(button.tag != -1){
               button.setBackgroundImage(UIImage(named: "c"), for: UIControlState.normal)
                 button.alpha = 1
+            }
         }
     }
     
